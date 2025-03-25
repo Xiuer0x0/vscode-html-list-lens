@@ -1,0 +1,107 @@
+{
+  "name": "html-list-lens",
+  "displayName": "HTML list lens",
+  "description": "",
+  "version": "0.0.6",
+  "engines": {
+    "vscode": "^1.98.2"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:handlebars",
+    "onLanguage:twig",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "html-list-lens.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "configuration": {
+      "title": "LI Annotator",
+      "properties": {
+        "htmlListLens.includeLanguages": {
+          "type": "array",
+          "description": "Additional languages to enable LI annotations on.",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "htmlListLens.excludeLanguages": {
+          "type": "array",
+          "description": "Languages to explicitly exclude from LI annotations.",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "htmlListLens.decorations.lightColor": {
+          "type": "string",
+          "default": "lightgray",
+          "description": "Text color for list annotations in light themes."
+        },
+        "htmlListLens.decorations.darkColor": {
+          "type": "string",
+          "default": "gray",
+          "description": "Text color for list annotations in dark themes."
+        },
+        "htmlListLens.decorations.lightBackground": {
+          "type": "string",
+          "default": "rgba(0, 0, 0, 0.1)",
+          "description": "Background color for annotations in light themes."
+        },
+        "htmlListLens.decorations.darkBackground": {
+          "type": "string",
+          "default": "rgba(255, 255, 255, 0.1)",
+          "description": "Background color for annotations in dark themes."
+        },
+        "htmlListLens.decorations.fontStyle": {
+          "type": "string",
+          "default": "italic",
+          "description": "Font style (e.g., italic) for annotation text."
+        },
+        "htmlListLens.decorations.fontWeight": {
+          "type": "string",
+          "default": "normal",
+          "description": "Font weight (e.g., bold) for annotation text."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.98.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.21.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "vsce": "^2.15.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
